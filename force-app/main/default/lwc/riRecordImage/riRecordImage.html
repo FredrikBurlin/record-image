@@ -1,0 +1,17 @@
+<template>
+    <template if:true={images}>
+        <template for:each={images} for:item="image">
+            <c-ri-image key={image.Id} image-id={image.Id} display-type={displayType}></c-ri-image>
+        </template>
+        <template if:false={hasImage}>
+            <lightning-card title={title} icon-name="standard:photo">
+                <div class="slds-m-around_medium">
+                    <c-ri-file-upload record-id={recordId} image-name={imageName} onnext={handleNext} onnewimage={handleNewImage}></c-ri-file-upload>
+                </div>
+            </lightning-card>
+        </template>
+    </template>
+    <template if:true={error}>
+        {error}
+    </template>
+</template>

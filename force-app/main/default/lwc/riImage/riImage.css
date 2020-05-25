@@ -1,0 +1,16 @@
+img.round {
+    object-fit: cover;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+}
+
+img.full {
+    width: 100%;
+}
+
+img.panorama {
+    object-fit: cover;
+    height: 200px;
+    width: 100%;
+}

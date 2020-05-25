@@ -1,5 +1,9 @@
 {
   "orgName": "fredrikburlin company",
   "edition": "Developer",
-  "features": []
+  "features": [],
+  "orgPreferences": {
+    "enabled": [],
+    "disabled": ["S1EncryptedStoragePref2"]
+  }
 }
