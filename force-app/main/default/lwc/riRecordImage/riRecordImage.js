@@ -5,10 +5,13 @@ import getImageFile from '@salesforce/apex/riFileUploadController.getImageFile';
 export default class RiRecordImage extends LightningElement {
     @api displayType;
     @api title;
+    @api description;
+    @api height;
     @api imageName;
     @api recordId;
 
     hasImage = true
+    showUpload = false;
     images;
     error;
 
@@ -28,6 +31,7 @@ export default class RiRecordImage extends LightningElement {
         getImageFile({ recordId: this.recordId, imageName: this.imageName })
             .then((data) => {
                 this.images = data;
+                this.showUpload = false;
                 this.hasImage = data.length !== 0;
                 this.error = undefined;
             })
@@ -35,5 +39,13 @@ export default class RiRecordImage extends LightningElement {
                 this.error = error;
                 this.images = undefined;
             });
+    }
+
+    handleChangeImage() {
+        this.showUpload = true;
+    }
+
+    handleCloseModal() {
+        this.showUpload = false;
     }
 }

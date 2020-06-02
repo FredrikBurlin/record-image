@@ -4,11 +4,28 @@ import updateImageName from '@salesforce/apex/riFileUploadController.updateImage
 
 export default class RiFileUpload extends LightningElement {
     @api recordId;
+    @api title;
+    @api description;
     @api imageName;
     uploadedFiles;
 
     get acceptedFormats() {
-        return ['.jpg', '.jpeg', '.png', '.gif'];
+        return ['.apng', '.bmp', '.gif', '.ico', '.cur', '.jpg', '.jpeg', '.jfif', '.pjpeg', '.pjp', '.png', '.svg', '.tif', '.tiff', '.webp'];
+    }
+
+    renderedCallback() {
+        this.changeButtonName();
+    }
+
+    changeButtonName() {
+        var str = document.getElementsByClassName("slds-file-selector__body");
+        console.log(str);
+        var x = str.getElementsByTagName("span");
+        for (var i = 0; i < x.length; i++) {
+            console.log(x[i].innerHTML);
+            var res = x[i].innerHTML.replace(/Upload Files/, "Upload Image");
+            x[i].innerHTML = res;
+        }
     }
 
     handleUploadFinished(event) {
@@ -29,6 +46,10 @@ export default class RiFileUpload extends LightningElement {
                 'message ' + error.body.message;
                 this.errorToast();
             });
+    }
+
+    closeModal() {
+        this.dispatchEvent(new CustomEvent('closemodal'));
     }
 
     successToast() {

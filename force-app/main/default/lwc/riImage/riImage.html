@@ -1,3 +1,8 @@
 <template>
-    <img src={url} class={displayType}/>
+    <div class="container" style={style}>
+        <img src={url} class={displayType} style={style}/>
+        <span class="btn">
+            <lightning-button-icon icon-name="utility:photo" alternative-text="Update Photo" title="Update Photo" onclick={changeImage}></lightning-button-icon>
+        </span>
+    </div>
 </template>

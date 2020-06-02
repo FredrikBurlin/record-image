@@ -31,6 +31,7 @@ public with sharing class riFileUploadController {
             SELECT Id, Title
             FROM ContentVersion
             WHERE ContentDocumentId IN :contents
+            ORDER BY CreatedDate desc
             LIMIT 1];
     }
 

@@ -4,6 +4,5 @@ Using the lightning-file-upload LWC to upload a image and display it on a record
 
 
 ## ToDo
-- Change image
-- Adjust height
-- Styling of Upload Files button and placeholder photo
+- Styling of Upload Files button
+- Test class

@@ -1,10 +1,39 @@
 <template>
     <template if:true={recordId}>
-        <lightning-file-upload
-                name="fileUploader"
-                accept={acceptedFormats}
-                record-id={recordId}
-                onuploadfinished={handleUploadFinished}>
-        </lightning-file-upload>
+        <section role="dialog" tabindex="-1" aria-labelledby="upload-modal-heading" aria-modal="true"
+            aria-describedby="upload-modal-content" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <lightning-button-icon
+                        icon-name="utility:close"
+                        variant="bare"
+                        onclick={closeModal}
+                        alternative-text="Close"
+                        class="slds-modal__close slds-button_icon-inverse"
+                        size="large"
+                        title="Close">
+                    </lightning-button-icon>
+                    <h2 id="upload-modal-heading" class="slds-modal__title slds-hyphenate">{title}</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="upload-modal-content">
+                    <p>
+                        {description}
+                    </p>
+                    <lightning-file-upload
+                        id="inputFile"
+                        name="fileUploader"
+                        accept={acceptedFormats}
+                        record-id={recordId}
+                        onuploadfinished={handleUploadFinished}>
+                    </lightning-file-upload>
+                </div>
+                <footer class="slds-modal__footer">
+                    <div style="">
+                        by Nordic Cloud Labs
+                    </div>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
     </template>
 </template>

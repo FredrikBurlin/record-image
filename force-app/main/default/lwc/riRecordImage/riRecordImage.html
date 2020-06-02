@@ -1,17 +1,38 @@
 <template>
-    <template if:true={images}>
-        <template for:each={images} for:item="image">
-            <c-ri-image key={image.Id} image-id={image.Id} display-type={displayType}></c-ri-image>
+    <div class="container">
+        <template if:true={images}>
+            <template for:each={images} for:item="image">
+                <c-ri-image key={image.Id}
+                    image-id={image.Id}
+                    display-type={displayType}
+                    height={height}
+                    onchangeimage={handleChangeImage}>
+                </c-ri-image>
+            </template>
+
+            <template if:false={hasImage}>
+                <c-ri-image
+                    display-type={displayType}
+                    height={height}
+                    onchangeimage={handleChangeImage}>
+                </c-ri-image>
+            </template>
+
+            <template if:true={showUpload}>
+                <c-ri-file-upload
+                    record-id={recordId}
+                    title={title}
+                    description={description}
+                    image-name={imageName}
+                    onnext={handleNext}
+                    onnewimage={handleNewImage}
+                    onclosemodal={handleCloseModal}>
+                </c-ri-file-upload>
+            </template>
         </template>
-        <template if:false={hasImage}>
-            <lightning-card title={title} icon-name="standard:photo">
-                <div class="slds-m-around_medium">
-                    <c-ri-file-upload record-id={recordId} image-name={imageName} onnext={handleNext} onnewimage={handleNewImage}></c-ri-file-upload>
-                </div>
-            </lightning-card>
+
+        <template if:true={error}>
+            {error}
         </template>
-    </template>
-    <template if:true={error}>
-        {error}
-    </template>
+    </div>
 </template>

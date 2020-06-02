@@ -2,16 +2,19 @@
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>48.0</apiVersion>
     <isExposed>true</isExposed>
-    <masterLabel>Record Image</masterLabel>
+    <masterLabel>[NCL] Record Image</masterLabel>
     <targets>
         <target>lightning__RecordPage</target>
     </targets>
     <targetConfigs>
         <targetConfig targets="lightning__RecordPage">
-            <property name="title" type="String" placeholder="e.g. Upload a Picture to the Record" label="Title"/>
+            <property name="title" type="String" default="Upload Picture" label="Title"/>
+            <property name="description" type="String" default="You can upload a JPG, GIF or PNG." label="Description"/>
             <property name="imageName" type="String" default="Record Image" label="Image Name" required="true"
-                    description="The name of the saved image. [WARNING] Be careful changing this afterwards, the previous uploaded photos will not show up in the component."/>
+                description="The name of the saved image. [WARNING] Be careful changing this afterwards, the previous uploaded photos will not show up in the component."/>
             <property name="displayType" type="String" default="round" label="Type" datasource="round,full,panorama" required="true"/>
+            <property name="height" type="String" default="200px" label="Height"
+                description="Does only apply to 'panorama' and 'round' display type"/>
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

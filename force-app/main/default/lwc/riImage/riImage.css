@@ -1,8 +1,6 @@
 img.round {
     object-fit: cover;
     border-radius: 50%;
-    height: 200px;
-    width: 200px;
 }
 
 img.full {
@@ -11,6 +9,24 @@ img.full {
 
 img.panorama {
     object-fit: cover;
-    height: 200px;
     width: 100%;
+}
+
+.container {
+    position: relative;
+}
+
+.container .btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.container .btn:hover {
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    border-radius: 4px;
 }
